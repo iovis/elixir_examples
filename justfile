@@ -12,7 +12,7 @@ init:
 
 # start the server
 dev:
-    # mix something?
+    watchexec -e ex,exs just test
 
 # open the project in the browser
 # open:
