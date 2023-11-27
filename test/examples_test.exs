@@ -44,4 +44,25 @@ defmodule ExamplesTest do
              list: []
            }
   end
+
+  test "comprehensions" do
+    # inline comprehension
+    got = for i <- [1, 2, 3], do: i * 2
+    assert got == [2, 4, 6]
+
+    # inline reduce
+    got =
+      for i <- 1..6,
+          # filter
+          rem(i, 2) == 0,
+          # Default: `into: []`
+          into: %{},
+          do: {i, "even!"}
+
+    assert got == %{
+             2 => "even!",
+             4 => "even!",
+             6 => "even!"
+           }
+  end
 end
